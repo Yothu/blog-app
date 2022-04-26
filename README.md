@@ -1,24 +1,45 @@
-# README
+# BLOG APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Blog Web Application that holds posts per user. 
 
-Things you may want to cover:
+## Configuration
+
+To use this project you first need to have installed the following:
+
++ Node.js
++ Ruby
++ PostgreSQL
++ Rails
 
 * Ruby version
 
-* System dependencies
+The version of ruby that is needed for this project is 
 
-* Configuration
++ 2.7.0
 
-* Database creation
+Once you have installed them, you need to use the following command to clone the repository:
 
-* Database initialization
+```
+git clone https://github.com/Yothu/blog-app.git
+```
+
+### Database creation
+
+Next, use this command to create the databases:
+```
+rake db:create
+```
+
+<!-- * Database initialization
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+* Services (job queues, cache servers, search engines, etc.) -->
 
-* Deployment instructions
+## Deployment instructions
 
-* ...
+Finally, use the following command to initialize the live server:
+
+```
+rails s
+```
