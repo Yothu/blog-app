@@ -1,73 +1,45 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+# BLOG APP
 
-# Project Name
+> Blog Web Application that holds posts per user. 
 
-> Description the project.
+## Configuration
 
+To use this project you first need to have installed the following:
 
-## Built With
++ Node.js
++ Ruby
++ PostgreSQL
++ Rails
 
-- Major languages
-- Frameworks
-- Technologies used
+* Ruby version
 
-## Live Demo (if available)
+The version of ruby that is needed for this project is 
 
-[Live Demo Link](https://livedemo.com)
++ 2.7.0
 
+Once you have installed them, you need to use the following command to clone the repository:
 
-## Getting Started
+```
+git clone https://github.com/Yothu/blog-app.git
+```
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
+### Database creation
 
+Next, use this command to create the databases:
+```
+rake db:create
+```
 
-To get a local copy up and running follow these simple example steps.
+<!-- * Database initialization
 
-### Prerequisites
+* How to run the test suite
 
-### Setup
+* Services (job queues, cache servers, search engines, etc.) -->
 
-### Install
+## Deployment instructions
 
-### Usage
+Finally, use the following command to initialize the live server:
 
-### Run tests
-
-### Deployment
-
-
-
-## Authors
-
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
-
-## Show your support
-
-Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
-## 📝 License
-
-This project is [MIT](./MIT.md) licensed.
+```
+rails s
+```
