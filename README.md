@@ -58,6 +58,10 @@ rails s
 
 Give a ⭐️ if you like this project!
 
+## Acknowledgments
+
+- Thanks to my family for their suport.
+
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
