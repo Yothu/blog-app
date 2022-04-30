@@ -1,1 +1,26 @@
-<p>Here is a list of users</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog App!</title>
+</head>
+<body>
+  <div class="index">
+    <% @users.each do |user| %>
+      <div class="user">
+        <div class="user-image">
+
+        </div>
+
+        <div class="user-basic-data">
+          <%= link_to user.name, {controller: 'users', action: 'show', id: user.id}, class: 'user-index-name' %>
+          <!-- <h3 class="user-index-name"><%= user.name %></h3> -->
+          <p class="user-index-posts">Posts: <%= user.posts_counter %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
