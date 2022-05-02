@@ -1,1 +1,41 @@
-<p>Here is a specific user</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog App! - User <%= @user.name %></title>
+</head>
+
+<body>
+  <div class="index">
+    <div class="user">
+      <img class="user-image black-border" src='<%= @user.photo %>' alt="user-image">
+      <div class="user-basic-data black-border">
+        <%= link_to @user.name, {controller: 'users' , action: 'show' , id: @user.id}, class: 'user-index-name' %>
+          <p class="user-index-posts">Posts: <%= @user.posts_counter || 0 %></p>
+      </div>
+    </div>
+
+    <div class="user-bio black-border">
+      <strong class="section-title">Bio</strong>
+      <p><%= @user.bio %></p>
+    </div>
+
+    <div class="user-posts">
+      <% @user.most_recent_posts.each do |post| %>
+        <div class="user-bio black-border">
+          <strong class="section-title">Post #<%= post.id %></strong>
+          <p><%= post.reduced_text %></p>
+          <p class="post-com-like">Comments: <%= post.comments_counter || 0 %>, Likes: <%= post.likes_counter || 0 %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="btn-container">
+      <%= link_to 'See al posts', {controller: 'posts', action: 'index', user_id: @user.id}, class: 'posts-btn black-border' %>
+    </div>
+  </div>
+</body>
+
+</html>

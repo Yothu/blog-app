@@ -13,5 +13,11 @@ class Post < ActiveRecord::Base
     comments.limit(5).order(created_at: :desc)
   end
 
+  def reduced_text
+    return text if text.length < 200
+
+    "#{text[0, 200]}..."
+  end
+
   private :update_post_counter
 end
