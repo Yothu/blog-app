@@ -16,7 +16,7 @@
   </div>
   <ul class="post-comments black-border">
     <% @post.comments.each do |comment| %>
-      <li class="comment"><b><%= comment.user.name %></b>: <%= comment.text %></li>
+      <li class="comment"><b><%= comment.author.name %></b>: <%= comment.text %></li>
     <% end %>
   </ul>
 </body>

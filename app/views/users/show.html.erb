@@ -11,8 +11,7 @@
 <body>
   <div class="index">
     <div class="user">
-      <div class="user-image black-border">
-      </div>
+      <img class="user-image black-border" src='<%= @user.photo %>' alt="user-image">
       <div class="user-basic-data black-border">
         <%= link_to @user.name, {controller: 'users' , action: 'show' , id: @user.id}, class: 'user-index-name' %>
           <p class="user-index-posts">Posts: <%= @user.posts_counter || 0 %></p>
@@ -25,14 +24,12 @@
     </div>
 
     <div class="user-posts">
-      <% post_num = 1 %>
       <% @user.most_recent_posts.each do |post| %>
         <div class="user-bio black-border">
-          <strong class="section-title">Post #<%= post_num %></strong>
+          <strong class="section-title">Post #<%= post.id %></strong>
           <p><%= post.reduced_text %></p>
           <p class="post-com-like">Comments: <%= post.comments_counter || 0 %>, Likes: <%= post.likes_counter || 0 %></p>
         </div>
-        <% post_num += 1 %>
       <% end %>
     </div>
     <div class="btn-container">
