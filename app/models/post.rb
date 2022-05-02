@@ -4,14 +4,11 @@ class Post < ActiveRecord::Base
   has_many :comments, class_name: 'Comment'
 
   def update_user_post_counter
-    if user.posts_counter.nil?
-      user.update(posts_counter: 1)
-    else
-      user.update(posts_counter: user.posts_counter + 1)
-    end
+    if user.posts_counter != user.posts.length
+      user.update(posts_counter: user.posts.length)
   end
 
   def most_recent_comments
-    comments.order(created_at: :desc).limit(5)
+    comments.limit(5).order(created_at: :desc)
   end
 end

@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   has_many :comments, class_name: 'Comment'
 
   def most_recent_posts
-    posts.order(created_at: :desc).limit(3)
+    posts.limit(3).order(created_at: :desc)
   end
 end
