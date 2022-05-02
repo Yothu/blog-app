@@ -1,1 +1,23 @@
-<p>Here is a post of a given user</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog App!</title>
+</head>
+<body>
+  <div class="post black-border">
+    <div class="post-detailed">
+      <h3>Post #<%= @post.id %> by <%= @user.name %></h3>
+      <p>Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
+    </div>
+    <p><%= @post.text %></p>
+  </div>
+  <ul class="post-comments black-border">
+    <% @post.comments.each do |comment| %>
+      <li class="comment"><b><%= comment.user.name %></b>: <%= comment.text %></li>
+    <% end %>
+  </ul>
+</body>
+</html>

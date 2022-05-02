@@ -13,17 +13,17 @@ body {
   margin: 1rem;
 }
 
-.user-image {
-  width: 7rem;
-  height: 7rem;
-
+.black-border {
   border: 2px solid black;
   border-radius: 5px;
 }
 
+.user-image {
+  width: 7rem;
+  height: 7rem;
+}
+
 .user-basic-data {
-  border: 2px solid black;  
-  border-radius: 5px;
   margin-left: 2rem;
   flex-grow: 1;
   display: flex;
@@ -41,4 +41,52 @@ body {
 .user-index-posts {
   flex-basis: 30%;
   align-self: flex-end;
+}
+
+.user-bio {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.post-com-like {
+  margin: 0rem 1rem;
+  text-align: right;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.posts-btn {
+  color: black;
+  text-decoration: none;
+  padding: 1rem;
+}
+
+.post-comments {
+  margin: 0rem 1rem;
+  list-style: none;
+  padding: 1rem 0rem;
+}
+
+.comment {
+  margin: 0.2rem 1rem;
+}
+
+.post {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.post-detailed {
+  display: flex;
+  justify-content: space-between;
 }

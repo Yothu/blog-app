@@ -1,1 +1,38 @@
-<p>Here is a list of posts for a given user</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog App! - <%= @user.name %> posts</title>
+</head>
+<body>
+  <div class="index">
+    <div class="user">
+      <div class="user-image black-border">
+      </div>
+      <div class="user-basic-data black-border">
+        <%= link_to @user.name, {controller: 'users' , action: 'show' , id: @user.id}, class: 'user-index-name' %>
+          <p class="user-index-posts">Posts: <%= @user.posts_counter || 0 %></p>
+      </div>
+    </div>
+
+    <div class="user-posts">
+      <% @user.most_recent_posts.each do |post| %>
+        <div class="user-bio black-border">
+          <%= link_to "Post ##{post.id}", {controller: 'posts', action: 'show', user_id: @user.id, id: post.id}, class: 'section-title' %>
+          <!-- <strong class="section-title">Post #<%= post.id %></strong> -->
+          <p><%= post.reduced_text %></p>
+          <p class="post-com-like">Comments: <%= post.comments_counter || 0 %>, Likes: <%= post.likes_counter || 0 %></p>
+        </div>
+        <ul class="post-comments black-border">
+          <% post.most_recent_comments.each do |comment| %>
+            <li class="comment"><b><%= comment.user.name %></b>: <%= comment.text %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</body>
+
+</html>

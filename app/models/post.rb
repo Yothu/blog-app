@@ -14,4 +14,10 @@ class Post < ActiveRecord::Base
   def most_recent_comments
     comments.order(created_at: :desc).limit(5)
   end
+
+  def reduced_text
+    return text if text.length < 200
+
+    text[0, 200] + '...'
+  end
 end
