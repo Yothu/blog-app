@@ -30,6 +30,9 @@
         </ul>
       <% end %>
     </div>
+    <div class="btn-container">
+      <%= link_to 'Pagination', {controller: 'users', action: 'show', id: @user.id}, class: 'posts-btn black-border' %>
+    </div>
   </div>
 </body>
 
