@@ -56,7 +56,7 @@ body {
 }
 
 .post-com-like {
-  margin: 0rem 1rem;
+  margin: 0 1rem;
   text-align: right;
 }
 
@@ -72,9 +72,9 @@ body {
 }
 
 .post-comments {
-  margin: 0rem 1rem;
+  margin: 0 1rem;
   list-style: none;
-  padding: 1rem 0rem;
+  padding: 1rem 0;
 }
 
 .comment {
