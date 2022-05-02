@@ -1,10 +1,10 @@
 class Post < ActiveRecord::Base
-  belongs_to :user, class_name: 'User'
+  belongs_to :author, class_name: 'User'
   has_many :likes, class_name: 'Like'
   has_many :comments, class_name: 'Comment'
 
   def update_user_post_counter
-    user.update(posts_counter: user.posts.length) if user.posts_counter != user.posts.length
+    author.update(posts_counter: author.posts.length) if author.posts_counter != author.posts.length
   end
 
   def most_recent_comments
