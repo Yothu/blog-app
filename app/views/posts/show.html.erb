@@ -19,6 +19,15 @@
       <li class="comment"><b><%= comment.author.name %></b>: <%= comment.text %></li>
     <% end %>
   </ul>
+
+  <div class="black-border">
+    <h3>Add a Comment!</h3>
+    <%= form_with url: "#{@post.id}/comments", scope: :comment do |f| %>
+      <%= f.text_area :text %>
+      <%= f.submit "Submit", disable_with: 'Submiting...' %>
+    <% end %>
+  </div>
+
   <div class="btn-container">
     <%= link_to 'Go Back', {controller: 'posts', action: 'index', user_id: @user.id}, class: 'posts-btn black-border' %>
   </div>

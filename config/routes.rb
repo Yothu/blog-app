@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/posts/:id', to: 'posts#show', as: 'user_post'
 
   post '/posts', to: 'posts#create'
+  post '/users/:user_id/posts/:id/comments', to: 'comments#create'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
