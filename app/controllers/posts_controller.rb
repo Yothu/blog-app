@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post.likes_counter = 0
     if @post.save
       flash[:success] = 'Post was created!'
-      redirect_to "/users/#{@post.author.id}/posts/"
+      redirect_to "/users/#{@post.author.id}/posts/#{@post.id}"
     else
       flash.now[:alert] = 'ERROR! Post was not created.'
       render :new
