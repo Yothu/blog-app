@@ -17,5 +17,8 @@
       <%= f.submit "Submit", disable_with: 'Submiting...' %>
     <% end %>
   </div>
+  <div class="btn-container">
+    <%= link_to 'Go Back', {controller: 'users', action: 'index'}, class: 'posts-btn black-border' %>
+  </div>
 </body>
 </html>
