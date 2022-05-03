@@ -19,5 +19,8 @@
       <li class="comment"><b><%= comment.author.name %></b>: <%= comment.text %></li>
     <% end %>
   </ul>
+  <div class="btn-container">
+    <%= link_to 'Go Back', {controller: 'posts', action: 'index', user_id: @user.id}, class: 'posts-btn black-border' %>
+  </div>
 </body>
 </html>

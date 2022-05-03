@@ -2,6 +2,25 @@ body {
   margin: 0;
 }
 
+.header {
+  margin: 1rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-btn {
+  align-self: center;
+}
+
+.header-btn:hover {
+  border-color: red;
+}
+
+.hover-title:hover {
+  color: blue;
+}
+
 .index {
   display: flex;
   flex-direction: column;
@@ -70,6 +89,11 @@ body {
   color: black;
   text-decoration: none;
   padding: 1rem;
+  margin: 0 1rem;
+}
+
+.posts-btn:hover {
+  border-color: red;
 }
 
 .post-comments {

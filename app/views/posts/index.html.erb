@@ -19,7 +19,7 @@
     <div class="user-posts">
       <% @user.posts.each do |post| %>
         <div class="user-bio black-border">
-          <%= link_to "Post ##{post.id}", {controller: 'posts', action: 'show', user_id: @user.id, id: post.id}, class: 'section-title' %>
+          <%= link_to "Post ##{post.id}", {controller: 'posts', action: 'show', user_id: @user.id, id: post.id}, class: 'section-title hover-title' %>
           <p><%= post.reduced_text %></p>
           <p class="post-com-like">Comments: <%= post.comments_counter || 0 %>, Likes: <%= post.likes_counter || 0 %></p>
         </div>
@@ -31,7 +31,7 @@
       <% end %>
     </div>
     <div class="btn-container">
-      <%= link_to 'Pagination', {controller: 'users', action: 'show', id: @user.id}, class: 'posts-btn black-border' %>
+      <%= link_to 'Go Back', {controller: 'users', action: 'show', id: @user.id}, class: 'posts-btn black-border' %>
     </div>
   </div>
 </body>
