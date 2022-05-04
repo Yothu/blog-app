@@ -23,7 +23,7 @@
   <div class="user-bio black-border">
     <h3 class="section-title">Add a Comment!</h3>
     <%= form_with url: "#{@post.id}/comments", scope: :comment, class: 'flex flex-column' do |f| %>
-      <%= f.text_area :text, class: 'full-size my-1', style: 'resize: vertical;' %>
+      <%= f.text_area :text, placeholder: 'Write a comment!', class: 'full-size my-1', style: 'resize: vertical;' %>
       <%= f.submit "Submit", disable_with: 'Submiting...', data_role: 'none', class: 'submit-btn black-border' %>
     <% end %>
   </div>
