@@ -142,3 +142,30 @@ body {
 .my-1 {
   margin: 1rem 0;
 }
+
+.success {
+  background-color: #A6D785;
+  margin: 0.5rem 1rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.error {
+  background-color: red;
+  margin: 0.5rem 1rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.mx-1 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

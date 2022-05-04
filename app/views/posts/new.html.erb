@@ -7,6 +7,9 @@
   <title>Blog App! - Create a post</title>
 </head>
 <body>
+  <% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: "#{name}" %>
+  <% end -%>
   <div class="index">
     <div class="">
       <h2>Create Post</h2>

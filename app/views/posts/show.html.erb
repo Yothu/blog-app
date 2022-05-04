@@ -7,11 +7,14 @@
   <title>Blog App!</title>
 </head>
 <body>
+  <% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: "#{name}" %>
+  <% end -%>
   <div class="post black-border">
     <div class="post-detailed">
       <h3 class="section-title">Post #<%= @post.id %> by <%= @user.name %></h3>
       <div class="flex">
-        <p>Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
+        <p class="mx-1">Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
         <%= form_with url: "#{@post.id}/likes", scope: :like, class: 'flex' do |f| %>
           <%= f.submit "Laik", class: 'submit-btn black-border' %>
         <% end %>
