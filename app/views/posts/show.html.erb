@@ -10,7 +10,12 @@
   <div class="post black-border">
     <div class="post-detailed">
       <h3 class="section-title">Post #<%= @post.id %> by <%= @user.name %></h3>
-      <p>Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
+      <div class="flex">
+        <p>Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
+        <%= form_with url: "#{@post.id}/likes", scope: :like, class: 'flex' do |f| %>
+          <%= f.submit "Laik", class: 'submit-btn black-border' %>
+        <% end %>
+      </div>
     </div>
     <p><%= @post.text %></p>
   </div>
