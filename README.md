@@ -27,24 +27,24 @@ The version of ruby that is needed for this project is
 
 Once you have installed them, you need to use the following command to clone the repository:
 
-```
-git clone https://github.com/Yothu/blog-app.git
-```
+```git clone https://github.com/Yothu/blog-app.git```
 
 ### Database creation
 
 Next, use this command to create the databases:
-```
-rake db:create
-```
+```rake db:create```
 
 ## Usage
 
 Finally, use the following command to initialize the live server:
 
-```
-rails s
-```
+```rails s```
+
+## Testing
+
+To check the test use the following command:
+
+```bundle exec rspec ./spec```
 
 ## Author
 

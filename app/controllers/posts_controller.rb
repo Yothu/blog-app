@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
+    @user = User.includes(:posts, posts: [:comments, { comments: [:author] }]).find(params[:user_id])
   end
 
   def show
     @user = User.find(params[:user_id])
-    @post = Post.find(params[:id])
+    @post = Post.includes(:comments, comments: [:author]).find(params[:id])
   end
 
   def new
@@ -17,11 +17,11 @@ class PostsController < ApplicationController
     @post.comments_counter = 0
     @post.likes_counter = 0
     if @post.save
-      flash[:success] = 'Post was created!'
       redirect_to "/users/#{@post.author.id}/posts/#{@post.id}"
+      flash[:success] = 'Post was created!'
     else
-      flash.now[:alert] = 'ERROR! Post was not created.'
-      render :new
+      redirect_to '/posts/new'
+      flash[:error] = 'ERROR! Post was not created.'
     end
   end
 end
