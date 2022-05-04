@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   def create
-    puts 'aaaaaaaaaa'
     @post = Post.find(params[:id])
     @comment = current_user.comments.new(params.require(:comment).permit(:text))
     @comment.post_id = @post.id

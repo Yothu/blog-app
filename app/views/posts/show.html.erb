@@ -9,7 +9,7 @@
 <body>
   <div class="post black-border">
     <div class="post-detailed">
-      <h3>Post #<%= @post.id %> by <%= @user.name %></h3>
+      <h3 class="section-title">Post #<%= @post.id %> by <%= @user.name %></h3>
       <p>Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
     </div>
     <p><%= @post.text %></p>
@@ -20,11 +20,11 @@
     <% end %>
   </ul>
 
-  <div class="black-border">
-    <h3>Add a Comment!</h3>
-    <%= form_with url: "#{@post.id}/comments", scope: :comment do |f| %>
-      <%= f.text_area :text %>
-      <%= f.submit "Submit", disable_with: 'Submiting...' %>
+  <div class="user-bio black-border">
+    <h3 class="section-title">Add a Comment!</h3>
+    <%= form_with url: "#{@post.id}/comments", scope: :comment, class: 'flex flex-column' do |f| %>
+      <%= f.text_area :text, class: 'full-size my-1', style: 'resize: vertical;' %>
+      <%= f.submit "Submit", disable_with: 'Submiting...', data_role: 'none', class: 'submit-btn black-border' %>
     <% end %>
   </div>
 
