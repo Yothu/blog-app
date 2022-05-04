@@ -59,7 +59,7 @@ RSpec.describe Post, type: :model do
     end
 
     it 'should return 5 comments when calling the most_recent_comments method' do
-      (1..5).each do
+      (1..7).each do
         Comment.create(text: 'vary texty', author_id: @user.id, post_id: subject.id)
       end
 
