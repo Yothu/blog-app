@@ -8,7 +8,7 @@
 </head>
 <body>
   <% flash.each do |name, msg| -%>
-  <%= content_tag :div, msg, class: "#{name}" %>
+  <%= content_tag :div, msg, class: "#{name} generic-alert" %>
   <% end -%>
   <div class="post black-border">
     <div class="post-detailed">

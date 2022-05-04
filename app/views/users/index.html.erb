@@ -8,6 +8,10 @@
 </head>
 <body>
   <div class="index">
+    <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: "#{name} generic-alert" %>
+    <% end -%>
+
     <div class="header black-border">
       <h2>Current User: <%= @current_user.name %></h2>
       <%= link_to 'Create Post', {controller: 'posts', action: 'new'}, class: 'posts-btn black-border header-btn' %>

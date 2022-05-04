@@ -145,6 +145,9 @@ body {
 
 .success {
   background-color: #a6d785;
+}
+
+.generic-alert {
   margin: 0.5rem 1rem;
   border-radius: 5px;
   padding: 0.5rem;
@@ -156,13 +159,6 @@ body {
 
 .error {
   background-color: red;
-  margin: 0.5rem 1rem;
-  border-radius: 5px;
-  padding: 0.5rem;
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bolder;
-  font-family: 'Courier New', Courier, monospace;
 }
 
 .mx-1 {

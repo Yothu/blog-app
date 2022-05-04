@@ -8,6 +8,10 @@
 </head>
 <body>
   <div class="index">
+    <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: "#{name} generic-alert" %>
+    <% end -%>
+
     <div class="user">
       <img class="user-image black-border" src='<%= @user.photo %>' alt="user-image">
       <div class="user-basic-data black-border">
