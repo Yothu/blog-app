@@ -9,6 +9,7 @@ RSpec.describe Post, type: :model do
 
     subject { Post.new(title: 't100', text: 'yehaa', comments_counter: 1, likes_counter: 0, author_id: @user.id) }
 
+
     before { subject.save }
 
     it 'should be valid if the title is t100' do
@@ -26,7 +27,6 @@ RSpec.describe Post, type: :model do
     end
 
     it 'should be valid if comments_counter is 0' do
-      puts "COM #{subject.comments_counter.class}"
       expect(subject).to be_valid
     end
 
@@ -41,7 +41,6 @@ RSpec.describe Post, type: :model do
     end
 
     it 'should be valid if likes_counter is 0' do
-      puts "LIK #{subject.likes_counter.class}"
       expect(subject).to be_valid
     end
 
@@ -53,6 +52,28 @@ RSpec.describe Post, type: :model do
     it 'should not be valid if likes_counter is -2' do
       subject.likes_counter = -9
       expect(subject).to_not be_valid
+    end
+
+    it 'should increase author\'s posts_counter by 1 on creation' do
+      expect(subject.author.posts_counter).to eq(1)
+    end
+
+    it 'should return 5 comments when calling the most_recent_comments method' do
+      (1..5).each do
+        Comment.create(text: 'vary texty', author_id: @user.id, post_id: subject.id)
+      end
+
+      expect(subject.most_recent_comments.length).to eq(5)
+    end
+
+    it 'shoud reduce text longer that 200 character with reduced_text' do
+      subject.text = 'a' * 500
+      expect(subject.reduced_text.length).to eq(203)
+    end
+
+    it 'shoud return true when a user liked the post' do
+      Like.create(author_id: @user.id, post_id: subject.id)
+      expect(subject.liked?(@user)).to eq(true)
     end
   end
 end
