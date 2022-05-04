@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog App! - Create a post</title>
+</head>
+<body>
+  <div class="index">
+    <div class="">
+      <h2>Create Post</h2>
+    </div>
+    <%= form_with model: @post , class: 'flex flex-column' do |f| %>
+      <%= f.text_field :title, placeholder: 'Title' %>
+      <%= f.text_area :text, placeholder: 'Write the post\'s content!', class: 'my-1' %>
+      <%= f.submit "Submit", disable_with: 'Submiting...', class: 'submit-btn black-border' %>
+    <% end %>
+  </div>
+  <div class="btn-container">
+    <%= link_to 'Go Back', {controller: 'users', action: 'index'}, class: 'posts-btn black-border' %>
+  </div>
+</body>
+</html>

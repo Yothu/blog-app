@@ -19,5 +19,12 @@ class Post < ActiveRecord::Base
     "#{text[0, 200]}..."
   end
 
+  def liked?(user)
+    likes.each do |like|
+      return true if like.author_id == user.id
+    end
+    false
+  end
+
   private :update_post_counter
 end

@@ -33,6 +33,7 @@
       <% end %>
     </div>
     <div class="btn-container">
+      <%= link_to 'Go Back', {controller: 'users', action: 'index'}, class: 'posts-btn black-border' %>
       <%= link_to 'See al posts', {controller: 'posts', action: 'index', user_id: @user.id}, class: 'posts-btn black-border' %>
     </div>
   </div>

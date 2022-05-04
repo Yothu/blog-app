@@ -9,8 +9,13 @@
 <body>
   <div class="post black-border">
     <div class="post-detailed">
-      <h3>Post #<%= @post.id %> by <%= @user.name %></h3>
-      <p>Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
+      <h3 class="section-title">Post #<%= @post.id %> by <%= @user.name %></h3>
+      <div class="flex">
+        <p>Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
+        <%= form_with url: "#{@post.id}/likes", scope: :like, class: 'flex' do |f| %>
+          <%= f.submit "Laik", class: 'submit-btn black-border' %>
+        <% end %>
+      </div>
     </div>
     <p><%= @post.text %></p>
   </div>
@@ -19,5 +24,17 @@
       <li class="comment"><b><%= comment.author.name %></b>: <%= comment.text %></li>
     <% end %>
   </ul>
+
+  <div class="user-bio black-border">
+    <h3 class="section-title">Add a Comment!</h3>
+    <%= form_with url: "#{@post.id}/comments", scope: :comment, class: 'flex flex-column' do |f| %>
+      <%= f.text_area :text, placeholder: 'Write a comment!', class: 'full-size my-1', style: 'resize: vertical;' %>
+      <%= f.submit "Submit", disable_with: 'Submiting...', data_role: 'none', class: 'submit-btn black-border' %>
+    <% end %>
+  </div>
+
+  <div class="btn-container">
+    <%= link_to 'Go Back', {controller: 'posts', action: 'index', user_id: @user.id}, class: 'posts-btn black-border' %>
+  </div>
 </body>
 </html>
