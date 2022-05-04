@@ -9,7 +9,6 @@ RSpec.describe Post, type: :model do
 
     subject { Post.new(title: 't100', text: 'yehaa', comments_counter: 1, likes_counter: 0, author_id: @user.id) }
 
-
     before { subject.save }
 
     it 'should be valid if the title is t100' do
