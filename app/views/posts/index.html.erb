@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="index">
+  <h1> Here is list of users</h1>
     <% flash.each do |name, msg| -%>
     <%= content_tag :div, msg, class: "#{name} generic-alert" %>
     <% end -%>
