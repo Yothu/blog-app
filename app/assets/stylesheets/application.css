@@ -165,3 +165,18 @@ body {
   margin-left: 1rem;
   margin-right: 1rem;
 }
+
+.login {
+  padding: 0.5rem;
+  margin: auto;
+  width: 80vw;
+}
+
+.field > * {
+  margin: 0.3rem 0;
+  display: block;
+}
+
+.login-box {
+  width: 97%;
+}
