@@ -26,7 +26,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).delete
+    post = Post.find(params[:id])
+    post.author.update(posts_counter: post.author.posts_counter - 1)
+    post.delete
     redirect_to root_path, notice: 'Post was deleted!'
   end
 
