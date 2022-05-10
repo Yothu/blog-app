@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  load_and_authorize_resource
+
   def create
     @post = Post.find(params[:id])
 
@@ -12,5 +14,5 @@ class LikesController < ApplicationController
       flash[:error] = 'ERROR! Could not like the post!'
     end
     redirect_to "/users/#{@post.author.id}/posts/#{@post.id}"
-  end
+  end  
 end
