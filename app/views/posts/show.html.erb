@@ -12,32 +12,38 @@
   <% end -%>
   <div class="post black-border">
     <div class="post-detailed">
-      <h3 class="section-title">Post #<%= @post.id %> by <%= @user.name %></h3>
+      <h3 class="section-title"><%= @post.title %> by <%= @user.name %></h3>
       <div class="flex">
         <p class="mx-1">Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></p>
-        <%= form_with url: "#{@post.id}/likes", scope: :like, class: 'flex' do |f| %>
+        <%= form_with model: Like.new, url: user_post_likes_path(post_id: @post.id), method: :post, class: 'flex' do |f| %>
           <%= f.submit "Laik", class: 'submit-btn black-border' %>
         <% end %>
       </div>
     </div>
     <p><%= @post.text %></p>
+    <% if can? :destroy, @post %>
+      <%= button_to "Delete post", user_post_path(user_id: @post.author.id, id: @post.id), method: :delete, data: {confirm: 'Are you sure? '} %>
+    <% end %>
   </div>
-  <ul class="post-comments black-border">
+  <ul class="post-comments black-border comment-order">
     <% @post.comments.each do |comment| %>
       <li class="comment"><b><%= comment.author.name %></b>: <%= comment.text %></li>
+      <% if can? :destroy, comment %>
+        <%= button_to "Delete comment", user_post_comment_path(user_id: comment.author.id, post_id: comment.post.id, id: comment.id), method: :delete, data: {confirm: 'Are you sure? '} %>
+      <% end %>
     <% end %>
   </ul>
 
   <div class="user-bio black-border">
     <h3 class="section-title">Add a Comment!</h3>
-    <%= form_with url: "#{@post.id}/comments", scope: :comment, class: 'flex flex-column' do |f| %>
+    <%= form_with model: Comment.new, url: user_post_comments_path(post_id: @post.id), method: :post, class: 'flex flex-column' do |f| %>
       <%= f.text_area :text, placeholder: 'Write a comment!', class: 'full-size my-1', style: 'resize: vertical;' %>
       <%= f.submit "Submit", disable_with: 'Submiting...', data_role: 'none', class: 'submit-btn black-border' %>
     <% end %>
   </div>
 
   <div class="btn-container">
-    <%= link_to 'Go Back', {controller: 'posts', action: 'index', user_id: @user.id}, class: 'posts-btn black-border' %>
+    <%= link_to 'Go Back', user_posts_path(user_id: @post.author.id), class: 'posts-btn black-border' %>
   </div>
 </body>
 </html>

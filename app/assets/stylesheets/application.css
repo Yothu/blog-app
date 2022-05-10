@@ -206,3 +206,10 @@ body {
   margin: auto;
   width: 80vw;
 }
+
+.comment-order {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
