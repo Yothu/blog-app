@@ -13,6 +13,13 @@ class CommentsController < ApplicationController
     redirect_to "/users/#{post.author.id}/posts/#{post.id}"
   end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.post.update(comments_counter: comment.post.comments_counter - 1)
+    comment.delete
+    redirect_to root_path, notice: 'Comment was deleted!'
+  end
+
   private
 
   def comment_params
