@@ -37,7 +37,7 @@
   </div>
 
   <div class="btn-container">
-    <%= link_to 'Go Back', {controller: 'posts', action: 'index', user_id: @user.id}, class: 'posts-btn black-border' %>
+    <%= link_to 'Go Back', user_posts_path(user_id: @post.author.id), class: 'posts-btn black-border' %>
   </div>
 </body>
 </html>

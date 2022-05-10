@@ -17,7 +17,7 @@
     <div class="user">
       <img class="user-image black-border" src='<%= @user.photo %>' alt="user-image">
       <div class="user-basic-data black-border">
-        <%= link_to @user.name, {controller: 'users' , action: 'show' , id: @user.id}, class: 'user-index-name' %>
+        <%= link_to @user.name, user_path(id: @user.id), class: 'user-index-name' %>
           <p class="user-index-posts">Posts: <%= @user.posts_counter || 0 %></p>
       </div>
     </div>
@@ -30,15 +30,16 @@
     <div class="user-posts">
       <% @user.most_recent_posts.each do |post| %>
         <div class="user-bio black-border">
-          <strong class="section-title">Post #<%= post.id %></strong>
+          <strong class="section-title"><%= post.title %></strong>
           <p><%= post.reduced_text %></p>
           <p class="post-com-like">Comments: <%= post.comments_counter || 0 %>, Likes: <%= post.likes_counter || 0 %></p>
         </div>
+
       <% end %>
     </div>
     <div class="btn-container">
-      <%= link_to 'Go Back', {controller: 'users', action: 'index'}, class: 'posts-btn black-border' %>
-      <%= link_to 'See al posts', {controller: 'posts', action: 'index', user_id: @user.id}, class: 'posts-btn black-border' %>
+      <%= link_to 'Go Back', users_path, class: 'posts-btn black-border' %>
+      <%= link_to 'See al posts', user_posts_path(user_id: @user.id), class: 'posts-btn black-border' %>
     </div>
   </div>
 </body>

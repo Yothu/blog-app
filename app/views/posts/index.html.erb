@@ -15,7 +15,7 @@
     <div class="user">
       <img class="user-image black-border" src='<%= @user.photo %>' alt="user-image">
       <div class="user-basic-data black-border">
-        <%= link_to @user.name, {controller: 'users' , action: 'show' , id: @user.id}, class: 'user-index-name' %>
+        <%= link_to @user.name, user_path(id: @user.id), class: 'user-index-name' %>
           <p class="user-index-posts">Posts: <%= @user.posts_counter || 0 %></p>
       </div>
     </div>
@@ -23,9 +23,12 @@
     <div class="user-posts">
       <% @user.posts.each do |post| %>
         <div class="user-bio black-border">
-          <%= link_to "Post ##{post.id}", {controller: 'posts', action: 'show', user_id: @user.id, id: post.id}, class: 'section-title hover-title' %>
+          <%= link_to "Post ##{post.id}", user_post_path(user_id: post.author.id, id: post.id), method: 'get', class: 'section-title hover-title' %>
           <p><%= post.reduced_text %></p>
           <p class="post-com-like">Comments: <%= post.comments_counter || 0 %>, Likes: <%= post.likes_counter || 0 %></p>
+          <% if can? :destroy, post %>
+            <%= button_to "Delete ", url: "/users/#{post.author.id}/posts/#{post.id}/destroy", :method => :delete, data: {confirm: 'Are you sure? '} %>
+          <% end %>
         </div>
         <ul class="post-comments black-border">
           <% post.most_recent_comments.each do |comment| %>
@@ -35,7 +38,7 @@
       <% end %>
     </div>
     <div class="btn-container">
-      <%= link_to 'Go Back', {controller: 'users', action: 'show', id: @user.id}, class: 'posts-btn black-border' %>
+      <%= link_to 'Go Back', user_path(id: @user.id), class: 'posts-btn black-border' %>
     </div>
   </div>
 </body>

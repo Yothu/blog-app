@@ -14,14 +14,14 @@
 
     <div class="header black-border">
       <h2>Current User: <%= @current_user.name %></h2>
-      <%= link_to 'Create Post', {controller: 'posts', action: 'new'}, class: 'posts-btn black-border header-btn' %>
+      <%= link_to 'Create Post', new_post_path, class: 'posts-btn black-border header-btn' %>
     </div>
     <% @users.each do |user| %>
       <div class="user">
         <img class="user-image black-border" src='<%= user.photo %>' alt="user-image">
 
         <div class="user-basic-data black-border">
-          <%= link_to user.name, {controller: 'users', action: 'show', id: user.id}, class: 'user-index-name hover-title' %>
+          <%= link_to user.name, user_path(id: user.id), class: 'user-index-name hover-title' %>
           <p class="user-index-posts">Posts: <%= user.posts_counter || 0%></p>
         </div>
       </div>
