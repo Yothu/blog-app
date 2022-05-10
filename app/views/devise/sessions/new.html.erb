@@ -1,4 +1,4 @@
-<h2 style = "display: flex; margin: auto; width: 80vw;">Log in</h2>
+<h2 class="auth-title">Log in</h2>
 
 <div class='black-border login'>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -13,7 +13,7 @@
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field login-checkbox-container">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
@@ -25,6 +25,6 @@
 <% end %>
 </div>
 
-<div style = "display: flex; margin: auto; width: 80vw;" >
+<div style = "display: flex; margin: auto; width: 80vw;" class="login-btns">
   <%= render "devise/shared/links" %>
 </div>
