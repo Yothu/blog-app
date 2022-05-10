@@ -3,7 +3,7 @@ class LikesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    
+
     return if @post.liked?(current_user)
 
     @like = Like.new(author_id: current_user.id, post_id: @post.id)
@@ -14,5 +14,5 @@ class LikesController < ApplicationController
       flash[:error] = 'ERROR! Could not like the post!'
     end
     redirect_to "/users/#{@post.author.id}/posts/#{@post.id}"
-  end  
+  end
 end
