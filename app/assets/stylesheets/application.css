@@ -165,3 +165,44 @@ body {
   margin-left: 1rem;
   margin-right: 1rem;
 }
+
+.login {
+  padding: 0.5rem;
+  margin: 1rem auto;
+  width: 80vw;
+}
+
+.login-checkbox-container {
+  justify-content: start;
+}
+
+.field > * {
+  margin: 0.3rem 0;
+}
+
+.text-box {
+  width: 97%;
+}
+
+.login-box {
+  width: 97%;
+}
+
+.login-btns > a {
+  border: 2px solid black;
+  padding: 0.3rem;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.login-btns > a:hover {
+  background-color: lightgray;
+}
+
+.auth-title {
+  display: flex;
+  margin: auto;
+  width: 80vw;
+}

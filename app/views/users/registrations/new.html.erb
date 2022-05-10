@@ -1,0 +1,40 @@
+<h2 class="auth-title">Sign up</h2>
+
+<div class='black-border login'>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'login-box' %>
+    </div>
+
+    <div class="field text-box">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autocomplete: "name", class: 'login-box' %>
+    </div>
+
+    <div class="field">
+      <div style="display: flex;" class="text-box">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+      </div>
+      <%= f.password_field :password, class: 'login-box', autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, class: 'login-label' %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'login-box' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+</div>
+
+<div style = "display: flex; margin: auto; width: 80vw;" class="login-btns">
+  <%= render "devise/shared/links" %>
+</div>
