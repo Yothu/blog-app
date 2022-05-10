@@ -19,7 +19,10 @@ RSpec.describe 'Users controller', type: :system do
     it 'I can see the profile picture for each user' do
       expect(page).to have_selector('img')
     end
-
+    
+    it 'I can see the number of posts each user has written' do
+      expect(page).to have_content('Posts: 5')
+    end
     # it 'When I click the submit button after filling in the username and the password with correct data, I am redirected to the root page' do
     #   fill_in 'Email', with: 'u@u'
     #   fill_in 'Password', with: '123123'
