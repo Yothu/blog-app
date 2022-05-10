@@ -36,8 +36,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_151405) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "text"
-    t.integer "comments_counter"
-    t.integer "likes_counter"
+    t.integer "comments_counter", default: 0, null: false
+    t.integer "likes_counter", default: 0, null: false
     t.integer "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_151405) do
     t.string "name"
     t.string "photo"
     t.text "bio"
-    t.integer "posts_counter"
+    t.integer "posts_counter", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -56,14 +56,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_151405) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.string "role", default: "user", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "users", column: "author_id"
-  add_foreign_key "likes", "posts"
-  add_foreign_key "likes", "users", column: "author_id"
-  add_foreign_key "posts", "users", column: "author_id"
+  add_foreign_key "comments", "posts", on_delete: :cascade
+  add_foreign_key "comments", "users", column: "author_id", on_delete: :cascade
+  add_foreign_key "likes", "posts", on_delete: :cascade
+  add_foreign_key "likes", "users", column: "author_id", on_delete: :cascade
+  add_foreign_key "posts", "users", column: "author_id", on_delete: :cascade
 end

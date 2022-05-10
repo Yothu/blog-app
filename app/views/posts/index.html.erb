@@ -23,11 +23,11 @@
     <div class="user-posts">
       <% @user.posts.each do |post| %>
         <div class="user-bio black-border">
-          <%= link_to "Post ##{post.id}", user_post_path(user_id: post.author.id, id: post.id), method: 'get', class: 'section-title hover-title' %>
+          <%= link_to "#{post.title}", user_post_path(user_id: post.author.id, id: post.id), method: :get, class: 'section-title hover-title' %>
           <p><%= post.reduced_text %></p>
           <p class="post-com-like">Comments: <%= post.comments_counter || 0 %>, Likes: <%= post.likes_counter || 0 %></p>
           <% if can? :destroy, post %>
-            <%= button_to "Delete ", url: "/users/#{post.author.id}/posts/#{post.id}/destroy", :method => :delete, data: {confirm: 'Are you sure? '} %>
+            <%= button_to "Delete post", user_post_path(user_id: post.author.id, id: post.id), method: :delete, data: {confirm: 'Are you sure? '} %>
           <% end %>
         </div>
         <ul class="post-comments black-border">

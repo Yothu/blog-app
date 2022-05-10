@@ -26,8 +26,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # self.class.delete()
-    puts 'VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV'
+    Post.find(params[:id]).delete
     redirect_to root_path, notice: 'Post was deleted!'
   end
 
