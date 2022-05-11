@@ -19,5 +19,17 @@ RSpec.describe 'Session controller', type: :system do
       click_button 'Login'
       expect(page).to have_content('Current User: ')
     end
+
+    it 'When I click the submit button without filling in the username and the password, I get a detailed error.' do
+      click_button 'Login'
+      expect(page).to have_content('Invalid Email or password.')
+    end
+
+    it 'Should get a detailed error if click the submit after filling the emails and pass with incorrect data' do
+      fill_in 'Email', with: 'a@z'
+      fill_in 'Password', with: '321432'
+      click_button 'Login'
+      expect(page).to have_content('Invalid Email or password.')
+    end
   end
 end
