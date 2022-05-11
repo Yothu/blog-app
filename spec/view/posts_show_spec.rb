@@ -49,10 +49,12 @@ RSpec.describe 'Posts', type: :system do
     end
 
     it 'I can see the username of each commentor.' do
-      expect(page).to have_content('user1: ')
+      expect(page).to have_content('user1:')
+      expect(page).to have_content('user2:')
     end
 
     it 'I can see the comment each commentor left.' do
+      expect(page).to have_content('comment1')
       expect(page).to have_content('comment2')
     end
   end

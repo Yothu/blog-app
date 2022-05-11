@@ -17,7 +17,7 @@ RSpec.describe 'Session', type: :system do
       fill_in 'Email', with: 'u@u'
       fill_in 'Password', with: '123123'
       click_button 'Login'
-      expect(page).to have_content('Current User: ')
+      expect(page.current_path).to have_content('/')
     end
 
     it 'When I click the submit button without filling in the username and the password, I get a detailed error.' do

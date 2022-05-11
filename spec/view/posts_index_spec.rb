@@ -14,10 +14,11 @@ RSpec.describe 'Posts', type: :system do
       @p2 = Post.create(id: 902, title: 'post2', text: 'no angel born in hell', author_id: 1234)
       @p3 = Post.create(id: 903, title: 'post3', text: 'the day the music died', author_id: 1234)
       @p4 = Post.create(id: 904, title: 'post4', text: 'bye, bye, miss american pie', author_id: 1234)
-      
+
       @c1 = Comment.create(id: 1001, text: 'be nimble, be quick', author_id: 1235, post_id: 901)
       @c2 = Comment.create(id: 1002, text: 'fire is the devils only friend', author_id: 1234, post_id: 901)
-      @c3 = Comment.create(id: 1003, text: 'i can still remember how that music used to make me smil', author_id: 1235, post_id: 901)
+      @c3 = Comment.create(id: 1003, text: 'i can still remember how that music used to make me smil', author_id: 1235,
+                           post_id: 901)
       @c4 = Comment.create(id: 1004, text: 'they be happy for a while', author_id: 1235, post_id: 901)
       @c5 = Comment.create(id: 1005, text: 'with every paper i delivered', author_id: 1234, post_id: 901)
       @c6 = Comment.create(id: 1006, text: 'drove my chevy to the levy', author_id: 1234, post_id: 901)

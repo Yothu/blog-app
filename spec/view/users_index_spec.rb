@@ -30,7 +30,7 @@ RSpec.describe 'Users', type: :system do
 
     it "When I click on a user, I am redirected to that user's show page" do
       click_link 'user1'
-      expect(page).to have_content('This is the bio for user1')
+      expect(page.current_path).to have_content('/users/1234')
     end
   end
 end
