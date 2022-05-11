@@ -1,7 +1,7 @@
 <h2 class="auth-title">Log in</h2>
 
 <div class='black-border login'>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
   <div class="field">
     <%= f.label :email, class: 'login-label' %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'login-box'  %>
@@ -20,7 +20,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Login" %>
   </div>
 <% end %>
 </div>
@@ -28,3 +28,12 @@
 <div style = "display: flex; margin: auto; width: 80vw;" class="login-btns">
   <%= render "devise/shared/links" %>
 </div>
+
+
+<% a = User.all %>
+<% a.each do |b| %>
+  <%= b.email %>
+</br>
+  <%= b.encrypted_password %>
+</br>
+<%end%>

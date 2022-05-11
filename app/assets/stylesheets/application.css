@@ -67,6 +67,11 @@ body {
   padding: 1rem;
 }
 
+.user-post {
+  margin: 1rem;
+  padding: 1rem;
+}
+
 .section-title {
   font-size: 1.5rem;
   color: black;
