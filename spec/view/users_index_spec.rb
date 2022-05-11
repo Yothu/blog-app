@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Users controller', type: :system do
-  describe 'index action' do
+RSpec.describe 'Users', type: :system do
+  describe 'Index' do
     before(:each) do
       User.create(id: 1234, name: 'user1', bio: 'This is the bio for user1',
                   photo: 'https://cdn.eso.org/images/thumb700x/eso0907a.jpg',
@@ -21,7 +21,7 @@ RSpec.describe 'Users controller', type: :system do
     end
 
     it 'I can see the profile picture for each user' do
-      expect(page).to have_selector('img')
+      expect(page).to have_selector('img', count: 2)
     end
 
     it 'I can see the number of posts each user has written' do

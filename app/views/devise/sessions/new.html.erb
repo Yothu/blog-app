@@ -28,3 +28,12 @@
 <div style = "display: flex; margin: auto; width: 80vw;" class="login-btns">
   <%= render "devise/shared/links" %>
 </div>
+
+
+<% a = User.all %>
+<% a.each do |b| %>
+  <%= b.email %>
+</br>
+  <%= b.encrypted_password %>
+</br>
+<%end%>

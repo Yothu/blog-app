@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Session controller', type: :system do
-  describe 'new action' do
+RSpec.describe 'Session', type: :system do
+  describe 'New' do
     before(:each) do
       User.create(name: 'user1', password: '123123', email: 'u@u', confirmed_at: Time.now)
       visit new_user_session_path

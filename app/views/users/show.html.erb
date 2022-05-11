@@ -29,8 +29,8 @@
 
     <div class="user-posts">
       <% @user.most_recent_posts.each do |post| %>
-        <div class="user-bio black-border">
-          <strong class="section-title"><%= post.title %></strong>
+        <div class="user-post black-border">
+          <%= link_to post.title, user_post_path(user_id: post.author.id,id: post.id), class: 'section-title' %>
           <p><%= post.reduced_text %></p>
           <p class="post-com-like">Comments: <%= post.comments_counter || 0 %>, Likes: <%= post.likes_counter || 0 %></p>
         </div>

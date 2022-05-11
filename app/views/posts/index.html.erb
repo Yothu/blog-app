@@ -13,8 +13,8 @@
     <% end -%>
 
     <div class="user">
-      <%# <img class="user-image black-border" src='<%= @user.photo %>' alt="user-image"> %>
-      <%= image_tag( @user.photo, :alt => "user-image") %>
+      <img class="user-image black-border" src='<%= @user.photo %>' alt="user-image">
+      
       <div class="user-basic-data black-border">
         <%= link_to @user.name, user_path(id: @user.id), class: 'user-index-name' %>
           <p class="user-index-posts">Posts: <%= @user.posts_counter || 0 %></p>
