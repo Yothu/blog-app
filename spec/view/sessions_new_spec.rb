@@ -13,7 +13,7 @@ RSpec.describe 'Session controller', type: :system do
       expect(page).to have_button('Login')
     end
 
-    it 'When I click the submit button after filling in the username and the password with correct data, I am redirected to the root page' do
+    it 'Should redirect to the root page if click the submit after filling in email and password with correct data' do
       fill_in 'Email', with: 'u@u'
       fill_in 'Password', with: '123123'
       click_button 'Login'
