@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     get '/users/sign_out', to: 'users/sessions#destroy'
   end
 
+  post '/api/v1/signup', to: 'api/v1/registrations#create'
+  post '/api/v1/login', to: 'api/v1/sessions#create'
+
   resources :posts, only: [:new, :create]
   resources :users, only: [:index, :show] do
     resources :posts, only: [:index, :show, :destroy] do

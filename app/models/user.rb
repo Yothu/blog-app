@@ -20,4 +20,10 @@ class User < ActiveRecord::Base
 
     false
   end
+
+  def correct_password?(token)
+    return true if apitoken == token
+
+    false
+  end
 end
