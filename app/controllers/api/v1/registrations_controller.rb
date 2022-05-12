@@ -3,7 +3,7 @@ module Api
     class Api::V1::RegistrationsController < ApplicationController
       def create
         user = User.new(user_params)
-        user.apitoken = AuthTokenService.call(params[:password])
+        user.apitoken = AuthTokenService.call(params[:email], params[:password])
         user.confirmed_at = Time.now
 
         if user.save
