@@ -23,7 +23,6 @@ module Api
 
         if comment.save
           render json: comment, status: :created
-          redirect_to '/api/v1/users'
         else
           render json: comment.errors, status: :unproccessable_entity
         end
@@ -40,7 +39,7 @@ end
 
 # curl --header "Content-Type: application/json" --request POST
 # --data '{"text": "this is my comment from a curl!!!"}'
-# http://localhost:3000/api/v1/users/1/posts/2/create -v
+# http://localhost:3000/api/v1/users/1/posts/2/comments -v
 
 # curl -v http://localhost:3000/api/v1/users/1/posts/2/comments
 # -X POST -H "Content-type: application/json" -d '{"text": "this is my comment from a curl!!!"}'
