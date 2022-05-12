@@ -2,6 +2,7 @@ module Api
   module V1
     class Api::V1::UsersController < ApplicationController
       def index
+        request.headers["token"]
         users = User.all
         render json: users, status: :ok
       end
