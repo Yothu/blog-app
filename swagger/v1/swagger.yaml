@@ -1,0 +1,175 @@
+---
+swagger: '2.0'
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users/{user_id}/posts/{post_id}/comments":
+    parameters:
+    - name: user_id
+      in: path
+      type: string
+      description: user_id
+      required: true
+    - name: post_id
+      in: path
+      type: string
+      description: post_id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      required: true
+      description: Auth token
+    get:
+      summary: List all Comments
+      tags:
+      - Comments
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: Create a Comment
+      tags:
+      - Comments
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/posts/{post_id}/comments/{id}":
+    parameters:
+    - name: user_id
+      in: path
+      type: string
+      description: user_id
+      required: true
+    - name: post_id
+      in: path
+      type: string
+      description: post_id
+      required: true
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      required: true
+      description: Auth token
+    get:
+      summary: Show a Comment
+      tags:
+      - Comments
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/posts":
+    parameters:
+    - name: user_id
+      in: path
+      type: string
+      description: user_id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      required: true
+      description: Auth token
+    get:
+      summary: List all Posts
+      tags:
+      - Posts
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/posts/{id}":
+    parameters:
+    - name: user_id
+      in: path
+      type: string
+      description: user_id
+      required: true
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      required: true
+      description: Auth token
+    get:
+      summary: Show a Post
+      tags:
+      - Posts
+      responses:
+        '200':
+          description: successful
+  "/api/v1/signup":
+    post:
+      summary: Registrate a User
+      tags:
+      - Sign Up
+      parameters:
+      - name: user
+        in: body
+        schema:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+          required:
+          - user
+          - name
+          - email
+          - password
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users":
+    get:
+      summary: List all Users
+      tags:
+      - Users
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Auth token
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      type: string
+      description: id
+      required: true
+    - name: Authorization
+      in: header
+      type: string
+      required: true
+      description: Auth token
+    get:
+      summary: Show a User
+      tags:
+      - Users
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
