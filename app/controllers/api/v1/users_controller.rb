@@ -1,9 +1,9 @@
 class Api::V1::UsersController < ApplicationController
   def index
-    if @current_user.present?
-      users = User.all
-      render json: users, status: :ok
-    end
+    return unless @current_user.present?
+
+    users = User.all
+    render json: users, status: :ok
   end
 
   def show
