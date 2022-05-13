@@ -5,7 +5,7 @@ class Api::V1::RegistrationsController < ApplicationController
     user = User.new(user_params)
 
     if params[:user][:email].present? && params[:user][:password].present?
-      user.apitoken = AuthTokenService.call(params[:email], params[:password])
+      user.apitoken = AuthTokenService.call(params[:user][:email], params[:user][:password])
       user.confirmed_at = Time.now
       if user.save
         render json: { message: 'Signed Up!', email: user.email, token: user.apitoken }, status: :ok
