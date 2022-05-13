@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  skip_before_action :check_user
   load_and_authorize_resource
 
   def create

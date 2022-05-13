@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :check_user
+  before_action :check_user, except: [:destroy]
   protect_from_forgery with: :null_session
+  before_action :authenticate_user!
 
   def self.current
     @current_user

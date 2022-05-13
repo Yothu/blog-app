@@ -1,7 +1,6 @@
 class Api::V1::CommentsController < ApplicationController
+  skip_before_action :authenticate_user!
   def index
-    puts "CURRENT USER: #{@current_user} IN COMMENT INDEX"
-
     user = User.find(params[:user_id])
     post = user.posts.find(params[:post_id])
 
@@ -11,8 +10,6 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   def show
-    puts "CURRENT USER: #{@current_user} IN COMMENT SHOW"
-
     user = User.find(params[:user_id])
     post = user.posts.find(params[:post_id])
     comment = post.comments.find(params[:id])
