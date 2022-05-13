@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable
+  #  , :confirmable
 
   has_many :posts, foreign_key: 'author_id', class_name: 'Post', dependent: :delete_all
   has_many :likes, foreign_key: 'author_id', class_name: 'Like', dependent: :delete_all
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
     false
   end
 
-  def correct_password?(token)
+  def correct_token?(token)
     return true if apitoken == token
 
     false

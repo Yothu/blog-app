@@ -1,16 +1,19 @@
-module Api
-  module V1
-    class Api::V1::SessionsController < ApplicationController
-      def create
-        user = User.find_by(email: params[:email])
+class Api::V1::SessionsController < ApplicationController
+  def create
+    auth
 
-        if user.correct_password?(params[:token])
-          sign_in(:user, user)
-          render json: { message: current_user }, status: :ok
-        else
-          render json: { error: 'nah men...' }
-        end
-      end
+    if @current_user.present?
+      render json: { user: @current_user.name, token: @current_user.apitoken }, status: :ok
+    else
+      render json: { error: 'USER NOR FOUND', status: :not_found }
     end
+  rescue StandardError => e
+    render json: { error: e }, status: :ok
+  end
+
+  def auth
+    user_real = User.find_by(apitoken: request.headers['Authorization'])
+    sign_in(:user, user_real)
+    @current_user = current_user
   end
 end

@@ -1,39 +1,52 @@
-module Api
-  module V1
-    class Api::V1::CommentsController < ApplicationController
-      def index
-        user = User.find(params[:user_id])
-        post = user.posts.find(params[:post_id])
+class Api::V1::CommentsController < ApplicationController
+  def index
+    puts "CURRENT USER: #{@current_user} IN COMMENT INDEX"
 
-        render json: post.comments, status: :ok
-      end
+    user = User.find(params[:user_id])
+    post = user.posts.find(params[:post_id])
 
-      def show
-        user = User.find(params[:user_id])
-        post = user.posts.find(params[:post_id])
-        comment = post.comments.find(params[:id])
+    render json: post.comments, status: :ok
+  rescue StandardError => e
+    render json: { error: e }, status: :not_found
+  end
 
-        render json: comment, status: :ok
-      end
+  def show
+    puts "CURRENT USER: #{@current_user} IN COMMENT SHOW"
 
-      def create
-        comment = Comment.new(comment_params)
-        comment.author_id = params[:user_id]
-        comment.post_id = params[:post_id]
+    user = User.find(params[:user_id])
+    post = user.posts.find(params[:post_id])
+    comment = post.comments.find(params[:id])
 
-        if comment.save
-          render json: comment, status: :created
-        else
-          render json: comment.errors, status: :unproccessable_entity
-        end
-      end
+    render json: comment, status: :ok
+  rescue StandardError => e
+    render json: { error: e }, status: :not_found
+  end
 
-      private
+  def create
+    auth
+    comment = Comment.new(comment_params)
+    comment.author = @current_user
+    comment.post_id = params[:post_id]
 
-      def comment_params
-        params.require(:comment).permit(:text)
-      end
+    if comment.save
+      render json: comment, status: :created
+    else
+      render json: comment.errors, status: :unproccessable_entity
     end
+  rescue StandardError => e
+    render json: { error: e }, status: :not_found
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:text)
+  end
+
+  def auth
+    user_real = User.find_by(apitoken: request.headers['Authorization'])
+    sign_in(:user, user_real)
+    @current_user = current_user
   end
 end
 
