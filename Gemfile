@@ -18,6 +18,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'jwt'
 gem 'rails-controller-testing'
 
 group :development, :test do

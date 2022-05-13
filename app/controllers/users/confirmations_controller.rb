@@ -1,4 +1,5 @@
 class Users::ConfirmationsController < Devise::ConfirmationsController
+  skip_before_action :check_user
   # GET /resource/confirmation/new
   # def new
   #   super

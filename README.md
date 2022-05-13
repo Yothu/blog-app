@@ -60,6 +60,40 @@ Finally, use the following command to initialize the live server:
 
 ```rails s```
 
+## API endpoints
+
+POST a User
+
+```curl localhost:3000/api/v1/signup -H "Content-Type: application/json" -d '{ "user": { "name": "[NAME]","email": "EMAIL","password": "[PASSWORD]" } }'```
+
+GET all Users
+
+```curl localhost:3000/api/v1/users -H "Authorization: [AUTH TOKEN]"```
+
+GET a User
+
+```curl localhost:3000/api/v1/users/[USER ID] -H "Authorization: [AUTH TOKEN]"```
+
+GET all Post of a User
+
+```curl localhost:3000/api/v1/users/[USER ID]/posts -H "Authorization: [AUTH TOKEN]"```
+
+GET a Post of a User
+
+```curl localhost:3000/api/v1/users/[USER ID]/posts/[POST ID] -H "Authorization: [AUTH TOKEN]"```
+
+GET all Comments of a Post of a User
+
+```curl localhost:3000/api/v1/users/[USER ID]/posts/[POST ID]/comments -H "Authorization: [AUTH TOKEN]"```
+
+GET a Comment of a Post of a User
+
+```curl localhost:3000/api/v1/users/[USER ID]/posts/[POST ID]/comments/[COMMENT ID] -H "Authorization: [AUTH TOKEN]"```
+
+POST a Comment in a Post of a User with your Account
+
+```curl localhost:3000/api/v1/users/[USER ID]/posts/[POST ID]/comments -H "Content-Type: application/json" -H "Authorization: [AUTH TOKEN]" -d '{ "text": "we did it!" }'```
+
 ## Testing
 
 To check the test use the following command:
