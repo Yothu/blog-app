@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   post '/api/v1/signup', to: 'api/v1/registrations#create'
-  post '/api/v1/login', to: 'api/v1/sessions#create'
+  post '/api/v1/signin', to: 'api/v1/sessions#create'
 
   resources :posts, only: [:new, :create]
   resources :users, only: [:index, :show] do
