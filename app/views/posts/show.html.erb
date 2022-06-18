@@ -27,10 +27,12 @@
   </div>
   <ul class="post-comments black-border comment-order">
     <% @post.comments.each do |comment| %>
-      <li class="comment"><b><%= comment.author.name %></b>: <%= comment.text %></li>
-      <% if can? :destroy, comment %>
-        <%= button_to "Delete comment", user_post_comment_path(user_id: comment.author.id, post_id: comment.post.id, id: comment.id), method: :delete, data: {confirm: 'Are you sure? '} %>
-      <% end %>
+      <div class="comment-row">
+        <li class="comment"><b><%= comment.author.name %></b>: <%= comment.text %></li>
+        <% if can? :destroy, comment %>
+          <%= button_to "Delete comment", user_post_comment_path(user_id: comment.author.id, post_id: comment.post.id, id: comment.id), method: :delete, data: {confirm: 'Are you sure? '} %>
+        <% end %>
+      </div>
     <% end %>
   </ul>
 
